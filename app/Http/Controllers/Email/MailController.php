@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Login;
+namespace App\Http\Controllers\Email;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Email\EmailRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
-    public function send(Request $request)
+    public function send(EmailRequest  $request)
     {
 
         $yzm = "";
@@ -22,9 +23,9 @@ class MailController extends Controller
 
         Mail::raw($yzm, function ($message)use ($email){
             // * 如果你已经设置过, mail.php中的from参数项,可以不用使用这个方法,直接发送
-            // $message->from("1182468610@qq.com", "laravel学习测试");
+            // $message->from("1723767677@qq.com", "laravel学习测试");
             $user=$email;
-            $message->subject("测试的邮件主题");
+            $message->subject("邮件主题");
             // 指定发送到哪个邮箱账号
             $message->to($user);
         });
@@ -32,7 +33,5 @@ class MailController extends Controller
         return $yzm ?
             json_success('获取邮箱成功!', $yzm, 200) :
             json_fail('获取邮箱失败!', null, 100);
-
-
     }
 }

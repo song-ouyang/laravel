@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\Imformatioin;
+
 use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 
-class User extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authenticatable
+class Superadmin extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authenticatable
 {
     //
     use Notifiable;
@@ -43,7 +42,6 @@ class User extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authen
     {
         try {
             $student_id = self::create($array)->id;
-            //echo "student_id:" . $student_id;
             return $student_id ?
                 $student_id :
                 false;
@@ -67,7 +65,6 @@ class User extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authen
                     'student_name' => $request['student_name'],
                     'student_email' => $request['student_email'],
                     'student_phone' => $request['student_phone'],
-
                 ]
             );
             return $res ?
@@ -89,7 +86,7 @@ class User extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authen
     {
         $student_job_number = $request['account'];
         try{
-            $count = User::select('account')
+            $count = Superadmin::select('account')
                 ->where('account',$student_job_number)
                 ->count();
             //echo "该账号存在个数：".$count;
@@ -116,7 +113,6 @@ class User extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authen
     public function getAuthIdentifierName()
     {
         // Return the name of unique identifier for the user (e.g. "id")
-
         return 'id';
     }
 

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
@@ -14,7 +13,7 @@ class Admin extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authe
     public $table = 'admin';
     protected $remeberTokenName = NULL;
     protected $guarded = [];
-    protected $fillable = [ 'password', 'name', 'phone','email','account','type'];
+    protected $fillable = [ 'password', 'name', 'phone','email','account'];
     protected $hidden = [
         'password',
     ];
@@ -42,7 +41,6 @@ class Admin extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authe
 
 
             $student_id = self::create($array)->id;
-            //echo "student_id:" . $student_id;
             return $student_id ?
                 $student_id :
                 false;
@@ -144,7 +142,7 @@ class Admin extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authe
             ]);
             return $res;
         } catch (\Exception $e) {
-            logError('存储个人信息失败！', [$e->getMessage()]);
+            logError('修改密码失败！', [$e->getMessage()]);
             return false;
         }
     }

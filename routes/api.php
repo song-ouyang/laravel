@@ -55,3 +55,8 @@ Route::prefix('email')->group(function () {
 });
 
 
+Route::prefix('swagger')->group(function () {
+    Route::get('aaa','Swagger\SwaggerController@aaa');
+    Route::post('bbb', 'Swagger\SwaggerController@bbb');
+    Route::post('ccc', 'Swagger\SwaggerController@bbb');
+});

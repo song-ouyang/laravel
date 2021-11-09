@@ -1,0 +1,218 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger接口文档",
+        "contact": {
+            "name": "文档",
+            "url": "https://laravelacademy.org/post/19694",
+            "email": "1723767677@qq.com"
+        },
+        "version": "3.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api/swagger",
+            "description": "后端接口地址"
+        },
+        {
+            "url": "oys68.cn",
+            "description": "接口地址二"
+        }
+    ],
+    "paths": {
+        "/bbb": {
+            "post": {
+                "tags": [
+                    "测试-oys"
+                ],
+                "summary": "测试post方法 常规方法",
+                "description": "通过访问相应的request来实现post方法",
+                "operationId": "newTaskItem",
+                "parameters": [
+                    {
+                        "name": "student_name",
+                        "in": "query",
+                        "description": "学生名",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "student_age",
+                        "in": "query",
+                        "description": "学生年龄",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "student_status",
+                        "in": "query",
+                        "description": "学生状态",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "返回成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/bbb"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "路径错误"
+                    },
+                    "422": {
+                        "description": "参数错误"
+                    },
+                    "500": {
+                        "description": "代码或者参数参数"
+                    }
+                }
+            }
+        },
+        "/aaa": {
+            "get": {
+                "tags": [
+                    "测试-oys"
+                ],
+                "summary": "测试get方法 test2",
+                "description": "描述干嘛的，中文",
+                "operationId": "newTaskItem",
+                "parameters": [
+                    {
+                        "name": "aaa",
+                        "in": "query",
+                        "description": "Accept header to specify api version",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "恭喜成功"
+                    },
+                    "404": {
+                        "description": "路径错误"
+                    },
+                    "422": {
+                        "description": "参数错误"
+                    },
+                    "500": {
+                        "description": "代码或者参数参数"
+                    }
+                }
+            }
+        },
+        "/ccc": {
+            "post": {
+                "tags": [
+                    "测试-oys"
+                ],
+                "summary": "测试post方法 传json格式的数据",
+                "description": "测试post方法 传json格式的数据，用post方法，传json",
+                "operationId": "newTaskItem",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "student_name": {
+                                        "description": "用户名称",
+                                        "type": "string"
+                                    },
+                                    "student_age": {
+                                        "description": "年龄",
+                                        "type": "integer"
+                                    },
+                                    "student_status": {
+                                        "description": "状态",
+                                        "type": "boolean"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "返回成功"
+                    },
+                    "404": {
+                        "description": "路径错误"
+                    },
+                    "422": {
+                        "description": "参数错误"
+                    },
+                    "500": {
+                        "description": "代码或者参数参数"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "bbb": {
+                "required": [
+                    "student_name",
+                    "student_age",
+                    "student_status"
+                ],
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": "200"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "example": "bbb方法操作成功"
+                    },
+                    "student_name": {
+                        "type": "string",
+                        "example": "欧阳松"
+                    },
+                    "student_age": {
+                        "type": "integer",
+                        "example": "20"
+                    },
+                    "student_status": {
+                        "type": "boolean",
+                        "example": "true"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "测试-oys",
+            "description": "oys用来测试的模块",
+            "externalDocs": {
+                "description": "测试的接口地址",
+                "url": "http://127.0.0.1:8000"
+            }
+        },
+        {
+            "name": "实战-xxx",
+            "description": "用来实战的模块",
+            "externalDocs": {
+                "description": "实战的接口地址",
+                "url": "http://127.0.0.1:8000"
+            }
+        }
+    ]
+}

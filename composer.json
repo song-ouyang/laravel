@@ -8,6 +8,7 @@
   ],
   "license": "MIT",
   "require": {
+      "darkaonline/l5-swagger": "^6.2",
     "php": "^7.2",
     "ext-curl": "*",
     "ext-gd": "*",
